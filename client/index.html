@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="libs/angular.min.js"></script>
+		<script src="app/app.js"></script>
+		<script src="monitoring/monitoring.controller.js"></script>
+		<title>LMNTS</title>
+	</head>
+
+	<body ng-app="app">
+
+		<div ng-controller="monitoringController">
+			<input ng-model="kind">
+			{{response}}
+			<button ng-click="getData()">Consultar</button>
+		</div>
+		
+	</body>
+</html>
