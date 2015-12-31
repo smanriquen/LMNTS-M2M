@@ -25,11 +25,9 @@ SECRET_KEY = 'smkcwvq1p)8fxgdas!52$(-n(e+3c*(p^$x!@%r6&_sem!8x+2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
 
-CORS_ORIGIN_ALLLOW_ALL = True
 
-#CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 
@@ -40,26 +38,29 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
+#    'corsheaders',
     'rest_framework',
     'postmanapp',
 )
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
-    'PAGE_SIZE': 10
+#    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+#    'PAGE_SIZE': 10
 }
 
 MIDDLEWARE_CLASSES = (
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+  #  'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
+  #  'django.middleware.security.SecurityMiddleware',
+  #  'corsheaders.middleware.CorsMiddleware',
+    'postmanapp.middleware.CorsMiddleware',
+
 )
 
 ROOT_URLCONF = 'lmntsProject.urls'
@@ -115,3 +116,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#CORS_ORIGIN_ALLLOW_ALL = True
+#CORS_ORIGIN_WHITELIST = ('127.0.0.1:3332',)
+#ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+#CORS_ALLOW_CREDENTIALS = True
+
+#CORS_ALLOW_HEADERS = (
+#'x-requested-with',
+#'content-type',
+#'accept',
+#'origin',
+#'authorization',
+#'x-csrftoken',
+#'Api-Authorization',
+#)

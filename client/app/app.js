@@ -2,5 +2,9 @@
 	'use strict';
 
 	angular
-		.module('app', []);
+		.module('app', [])
+	/*	.config(['$httpProvider', function($httpProvider) {
+	//		$httpProvider.defaults.useXDomain = true;
+    }
+]);*/
 })();
