@@ -43,7 +43,7 @@ class DeviceDetails(APIView):
 
 	def put(self, request, pk, format=None):
 		device =self.get_object(pk)
-		serializer = DeviceSerializer(device, data=request.DATA)
+		serializer = DeviceSerializer(device, data=request.data)
 		if serializer.is_valid():
 			serializer.save()
 			return Response(serializer.data)

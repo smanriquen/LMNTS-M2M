@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<script src="libs/angular.min.js"></script>
+		<script src="libs/jquery-1.11.3.min.js"></script>
 		<script src="app/app.js"></script>
 		<script src="monitoring/monitoring.controller.js"></script>
 		<script src="configuring/configuring.controller.js"></script>
@@ -10,13 +11,33 @@
 
 	<body ng-app="app">
 
+		<h1>MONITORING PHASE</h1>
 		<div ng-controller="monitoringController">
-			{{response}}
+			Device id:
+    			<input type="text" ng-model="deviceId">
 			<button ng-click="getData()">Get data!</button>
+			<button ng-click="getAllData()">Get all data!</button>
+			<hr>
+			{{response}}
+			<hr>
 		</div>
+
+		<h1>CONTROLLING PHASE</h1>
 		<div ng-controller="configuringController">
+			Reference:
+    			<input type="text" ng-model="reference">
+    		Description:
+    			<input type="text" ng-model="description">
+    		Command:
+    			<input type="text" ng-model="command">
+			
+			<button ng-click="upDateData()">Update data!</button>
+			<hr>
 			{{response}}
 			<button ng-click="postData()">Post data!</button>
+			<hr>
+			{{response}}
+			<hr>
 		</div>
 		
 	</body>

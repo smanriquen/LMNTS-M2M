@@ -13,10 +13,9 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='device',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('kind', models.CharField(max_length=140)),
-                ('model', models.CharField(max_length=140)),
-                ('comment', models.TextField()),
+                ('reference', models.IntegerField(serialize=False, primary_key=True)),
+                ('description', models.TextField(max_length=140)),
+                ('command', models.TextField()),
             ],
         ),
     ]

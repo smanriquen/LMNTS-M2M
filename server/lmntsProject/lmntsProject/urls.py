@@ -18,5 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^postmanapp/', include('postmanapp.urls')),
+    url(r'^M2M/', include('M2M.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ]
