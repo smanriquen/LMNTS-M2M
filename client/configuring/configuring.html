@@ -1,0 +1,17 @@
+<h1>CONFIGURING PHASE</h1>
+<div ng-controller="configuringController">
+	Reference:
+		<input type="text" ng-model="reference">
+	Description:
+		<input type="text" ng-model="description">
+	Command:
+		<input type="text" ng-model="command">
+	
+	<button ng-click="upDateData()">Update data!</button>
+	<hr>
+	{{response}}
+	<button ng-click="postData()">Post data!</button>
+	<hr>
+	{{response}}
+	<hr>
+</div>

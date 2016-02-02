@@ -1,44 +1,48 @@
 <!doctype html>
 <html>
 	<head>
+		<script src="libs/d3.min.js"></script>
 		<script src="libs/angular.min.js"></script>
+		<script src="libs/angular-ui-router.min.js"></script>
 		<script src="libs/jquery-1.11.3.min.js"></script>
 		<script src="app/app.js"></script>
+		<script src="app/config.js"></script>
 		<script src="monitoring/monitoring.controller.js"></script>
+		<script src="monitoring/monitoring.factory.js"></script>
 		<script src="configuring/configuring.controller.js"></script>
-		<title>LMNTS</title>
-	</head>
+		<script src="configuring/configuring.factory.js"></script>
+		<script src="directives/script.directive.js"></script>
 
+		<title>LMNTS</title>
+
+
+		<style>
+
+			svg {
+			  font: 10px sans-serif;
+			}
+			.line {
+			  fill: none;
+			  stroke: #000;
+			  stroke-width: 1.5px;
+			}
+			.axis path,
+			.axis line {
+			  fill: none;
+			  stroke: #000;
+			  shape-rendering: crispEdges;
+			}
+
+		</style>
+	</head>
+	
 	<body ng-app="app">
 
-		<h1>MONITORING PHASE</h1>
-		<div ng-controller="monitoringController">
-			Device id:
-    			<input type="text" ng-model="deviceId">
-			<button ng-click="getData()">Get data!</button>
-			<button ng-click="getAllData()">Get all data!</button>
-			<hr>
-			{{response}}
-			<hr>
-		</div>
+		
+		<a ui-sref="monitoring">Monitoring</a>
+    <a ui-sref="configuring">Configuring</a>
+    <div ui-view></div>
 
-		<h1>CONTROLLING PHASE</h1>
-		<div ng-controller="configuringController">
-			Reference:
-    			<input type="text" ng-model="reference">
-    		Description:
-    			<input type="text" ng-model="description">
-    		Command:
-    			<input type="text" ng-model="command">
-			
-			<button ng-click="upDateData()">Update data!</button>
-			<hr>
-			{{response}}
-			<button ng-click="postData()">Post data!</button>
-			<hr>
-			{{response}}
-			<hr>
-		</div>
 		
 	</body>
 </html>

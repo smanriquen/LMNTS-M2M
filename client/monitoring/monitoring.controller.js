@@ -4,41 +4,25 @@
 	angular
 		.module('app')
           .controller('monitoringController', monitoringController);
-              //name                  //function
+              
+  function monitoringController($scope, $http, monitoringFactory, $state){
 
-     function monitoringController($scope, $http){
+    $scope.state = $state
+  
+   	$scope.getData = function(){
+      monitoringFactory.get_element($scope.deviceId)
+          .then(function(response){
+                  $scope.response=response.data;
+                });
+   	};
 
-          $scope.deviceId = 1;
-
-     	$scope.getData = function(){
-
-               var url = "http://localhost:8000/postmanapp/devices/" + $scope.deviceId + "/";
-     		$http({
-
-     			method: "GET",
-     			url: url
-     		}).then(function(response){
-     			$scope.response=response.data;
-
-     		})
-
-          
-     	};
-
-          $scope.getAllData = function(){
-               $http({
-
-                    method: "GET",
-                    url: "http://localhost:8000/postmanapp/devices/"
-               }).then(function(response){
-                    $scope.response=response.data;
-
-               })
-               
-          };
-
-     	//$scope.kind = "This is my kind"
-     }
-
-
+    $scope.getAllData = function(){
+      monitoringFactory.get_all()
+          .then(function(response){
+                  $scope.response=response.data;
+                }) 
+    };
+ };
 })();
+
+ //http://www.d3noob.org/2014/02/making-bar-chart-in-d3js.html

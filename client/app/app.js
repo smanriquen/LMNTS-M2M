@@ -2,9 +2,6 @@
 	'use strict';
 
 	angular
-		.module('app', [])
-	/*	.config(['$httpProvider', function($httpProvider) {
-	//		$httpProvider.defaults.useXDomain = true;
-    }
-]);*/
+		.module('app', ['ui.router', 'ngLoadScript'])
+
 })();
