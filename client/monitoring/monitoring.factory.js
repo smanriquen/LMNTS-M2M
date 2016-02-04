@@ -14,8 +14,9 @@
      						})
       },
   	
-  		get_element: function(element){
-  			var url = "http://localhost:8000/postmanapp/devices/" + element + "/";
+  		get_element: function(element, characteristic){
+  			var url = "http://localhost:8000/M2M/machines/" + element + "/characteristics/" + characteristic + "/value";
+                                      
   			return $http({
      						method: "GET",
      						url: url

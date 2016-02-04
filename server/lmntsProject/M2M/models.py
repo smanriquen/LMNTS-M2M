@@ -5,16 +5,16 @@ from django.db import models
 class machine(models.Model):
 	machineType = models.CharField(max_length=140, blank=True)
 	family = models.CharField(max_length=140, blank=True)
-	serial = models.CharField(max_length=100, primary_key=True, blank=True)
+	serial = models.CharField(max_length=100, primary_key=True)
 	MAC = models.CharField(max_length=20, blank=True)
 	services = models.TextField(null=True, blank=True)
 
 	
 
 class characteristics(models.Model):
-	characteristicType = models.CharField(max_length=140, blank=True)
-	parent = models.ForeignKey(machine, related_name='characteristics', on_delete=models.CASCADE, blank=True)
-	value = models.CharField(max_length=140, blank=True)
+	characteristicType = models.CharField(max_length=140, null=False, blank=True)
+	parent = models.ForeignKey(machine, related_name='characteristics', on_delete=models.CASCADE, null=False, blank=True)
+	value = models.CharField(max_length=140, null=False, blank=True)
 	timer = models.CharField(max_length=140, blank=True)
 	lastRead = models.DateTimeField(auto_now=True, blank=True)
 	

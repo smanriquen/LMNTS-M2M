@@ -3,7 +3,8 @@ from . import views
 
 urlpatterns = [
 
-    url(r'^machines/$', views.MachineList.as_view()),
+    url(r'^machines/$', views.MachineList.as_view(), name='machines_list'),
+    url(r'^machines/(?P<serial>[0-9]{4}-[0-9]+)/characteristics/(?P<field>\w+)/(?P<value>\w+)/$', views.CharacteristicsDetails.as_view(),  {'family':'', 'machineType':''}),
    # url(r'^characteristics/$', views.CharacteristicsList.as_view()),
 	url(r'^machines/(?P<family>\w+)/$', views.MachineDetails.as_view(), {'machineType': '','serial': '','field':'', 'value':''}),
 	url(r'^machines/(?P<family>\w+)/(?P<machineType>\w+)/$', views.MachineDetails.as_view(), {'serial':'','field':'', 'value':''}),

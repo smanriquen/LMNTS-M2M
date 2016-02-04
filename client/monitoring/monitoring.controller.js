@@ -5,23 +5,39 @@
 		.module('app')
           .controller('monitoringController', monitoringController);
               
-  function monitoringController($scope, $http, monitoringFactory, $state){
-
-    $scope.state = $state
+  function monitoringController($scope, $http, monitoringFactory, $state, $timeout){
   
-   	$scope.getData = function(){
-      monitoringFactory.get_element($scope.deviceId)
+   	$scope.get_data = function(){
+      monitoringFactory.get_element($scope.device_id, $scope.characteristic)
           .then(function(response){
-                  $scope.response=response.data;
+                  $scope.response=response.data.replace( /[^0-9]/g, '' );
                 });
    	};
 
-    $scope.getAllData = function(){
+    $scope.get_all_data = function(){
       monitoringFactory.get_all()
           .then(function(response){
                   $scope.response=response.data;
                 }) 
     };
+
+
+    $scope.interval_function = function(){
+
+        $scope.draw_loop = true
+        
+        $timeout(function() {
+        $scope.get_data();
+        $scope.interval_function();
+        }, 1000)
+      
+
+    };
+
+
+
+
+
  };
 })();
 

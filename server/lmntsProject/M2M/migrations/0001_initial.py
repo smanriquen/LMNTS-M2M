@@ -11,29 +11,28 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='lecture',
+            name='characteristics',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('lecturetype', models.CharField(max_length=140)),
-                ('value', models.CharField(max_length=140)),
-                ('timer', models.TimeField()),
-                ('lastread', models.DateField(auto_now=True)),
+                ('characteristicType', models.CharField(max_length=140, blank=True)),
+                ('value', models.CharField(max_length=140, blank=True)),
+                ('timer', models.CharField(max_length=140, blank=True)),
+                ('lastRead', models.DateTimeField(auto_now=True)),
             ],
         ),
         migrations.CreateModel(
             name='machine',
             fields=[
-                ('machinetype', models.CharField(max_length=140)),
-                ('family', models.CharField(max_length=140)),
-                ('serial', models.IntegerField(serialize=False, primary_key=True)),
-                ('MAC', models.IntegerField()),
-                ('characteristics', models.TextField()),
-                ('services', models.TextField()),
+                ('machineType', models.CharField(max_length=140, blank=True)),
+                ('family', models.CharField(max_length=140, blank=True)),
+                ('serial', models.CharField(max_length=100, serialize=False, primary_key=True)),
+                ('MAC', models.CharField(max_length=20, blank=True)),
+                ('services', models.TextField(null=True, blank=True)),
             ],
         ),
         migrations.AddField(
-            model_name='lecture',
+            model_name='characteristics',
             name='parent',
-            field=models.ForeignKey(to='M2M.machine'),
+            field=models.ForeignKey(related_name='characteristics', blank=True, to='M2M.machine'),
         ),
     ]
